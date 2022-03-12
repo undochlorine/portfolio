@@ -1,5 +1,5 @@
 var allLinks = document.querySelectorAll('a');
-allLinks.forEach(l => l.target = '_blank')
+allLinks.forEach(l => l.target = '_blank');
 
 document.querySelector('.description').onclick = () => {
    let e = document.querySelector('.skills');
@@ -19,20 +19,34 @@ document.querySelector('.face').onclick = () => {
 }
 
 const hobbiesList = ['english', 'chess', 'gym', 'baseball', 'speedcubing'];
+// if (window.innerWidth >= 1025) {
+// 	hobbiesList.forEach(h => {
+// 		document.querySelector(`.hobbies > .${h}`).onmouseover = () => {alert(0)
+// 			document.querySelector(`.${h}`).style.backgroundImage = `./img/${h}.jpg`;
+// 			document.querySelector(`.${h}`).style.backgroundRepeat = `no-repeat`;
+// 			document.querySelector(`.${h}`).style.backgroundSize = `cover`;
+// 			if (h === 'baseball')
+// 				document.querySelector(`.${h}`).style.backgroundImage = `./img/${h}jfif`;
+// 		}
+// 		document.querySelector(`.hobbies > .${h}`).onmouseout = () => {alert(1)
+// 			document.querySelector(`.${h}`).style.backgroundImage = `none`;
+// 		}
+// 	});
+// }
 hobbiesList.forEach(el => {
-	if (window.innerWidth >= 1050) {
-		document.querySelector(`.${el}`).onmouseover = () => {
-			document.querySelector(`.${el} > p`).style.padding = '3px';
-			document.querySelector(`.${el} > p`).style.borderRadius = '5px';
-			document.querySelector(`.${el} > p`).style.background = '#ccddd3';
-			document.querySelector(`.${el}`).style.border = 'none';
-		}
-		document.querySelector(`.${el}`).onmouseout = () => {
-			document.querySelector(`.${el} > p`).style.padding = '0px';
-			document.querySelector(`.${el} > p`).style.background = 'none';
-			document.querySelector(`.${el} > p`).style.borderRadius = '0px';
-			document.querySelector(`.${el}`).style.border = '3px solid black';
-		}
+	if (window.innerWidth >= 1025) {
+		document.querySelectorAll(`.${el}`).forEach((e, index) => e.onmouseover = () => {
+			document.querySelectorAll(`.${el} > p`)[index].style.padding = '3px';
+			document.querySelectorAll(`.${el} > p`)[index].style.borderRadius = '5px';
+			document.querySelectorAll(`.${el} > p`)[index].style.background = '#ccddd3';
+			document.querySelectorAll(`.${el}`)[index].style.border = 'none';
+		})
+		document.querySelectorAll(`.${el}`).forEach((e, index) => e.onmouseout = () => {
+			document.querySelectorAll(`.${el} > p`)[index].style.padding = '0px';
+			document.querySelectorAll(`.${el} > p`)[index].style.background = 'none';
+			document.querySelectorAll(`.${el} > p`)[index].style.borderRadius = '0px';
+			document.querySelectorAll(`.${el}`)[index].style.border = '3px solid black';
+		})
 	}
 })
 

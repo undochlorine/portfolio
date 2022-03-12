@@ -107,9 +107,9 @@ body{
         font-size: 2.2em;
         background: transparent;
     }
-    .english {background-image: url('./img/eng.jpg');background-repeat: no-repeat;background-size: cover;}
+    .english {background-image: url('./img/english.jpg');background-repeat: no-repeat;background-size: cover;}
     .chess {background-image: url('./img/chess.jpg');background-repeat: no-repeat;background-size: cover;}
-    .speedcubing {background-image: url('./img/3x3cubes.jpg');background-repeat: no-repeat;background-size: cover;}
+    .speedcubing {background-image: url('./img/speedcubing.jpg');background-repeat: no-repeat;background-size: cover;}
     .baseball {background-image: url('./img/baseball.jfif');background-repeat: no-repeat;background-size: cover;}
     .gym {background-image: url('./img/gym.jpg');background-repeat: no-repeat;background-size: cover;}
     .english, .chess, .speedcubing, .baseball, .gym {
@@ -183,19 +183,10 @@ body{
     .skills {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: 1.15fr 1fr 1fr 1fr;
-        grid-template-areas:
-            "header header"
-            "js html"
-            "js css"
-            "js git";
         gap: 5px;
     }
-    .skills > .header {grid-area: header;}
-    .skills > .js {grid-area: js;}
-    .skills > .html {grid-area: html;}
-    .skills > .css {grid-area: css;}
-    .skills > .git {grid-area: git;}
+    .skills > .header {grid-column: 1/3;}
+    .skills > .js {grid-row: 2/5;}
     .item.js > * {font-size: 2.1em;}
     .english, .chess, .speedcubing, .baseball, .gym {
         height: 95px;
@@ -206,20 +197,10 @@ body{
     .hobbies {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: 0.7fr 1fr 1fr 1fr;
-        grid-template-areas:
-            "header header"
-            "english chess"
-            "speedcubing baseball"
-            "gym gym";
         gap: 5px;
     }
-    .hobbies > .header {grid-area:header;}
-    .hobbies > .english {grid-area:english;}
-    .hobbies > .chess {grid-area:chess;}
-    .hobbies > .speedcubing {grid-area:speedcubing;}
-    .hobbies > .baseball {grid-area:baseball;}
-    .hobbies > .gym {grid-area:gym;}
+    .hobbies > .header,
+    .hobbies > *:last-child {grid-column: 1/3;}
     .projects {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -257,7 +238,6 @@ body{
     .feedback {
         top: -20vw;
         grid-column: 2 / 3;
-        /* grid-row-start: 1; */
         flex-direction: column;
         justify-content: start;
         align-items: center;
@@ -327,41 +307,22 @@ body{
     
 }
 @media (min-width: 1600px) {
-    .item > p, .item.js > p, .hobbies > .item > p, .skills > .header
+    .item > p, .item.js > p, .hobbies > .item > p
     {
         font-size: 3em;
     }
 }
-@media (min-width: 1700px) {
-    
-}
-@media (min-width: 1800px) {
-    
-}
-@media (min-width: 1900px) {
-    
-}
-@media (min-width: 2000px) {
-    
-}
-@media (min-width: 2100px) {
-    
-}
+
 @media (min-width:1025px) {
-    .english, .chess, .speedcubing, .baseball, .gym {
+    .hobbies > * {
         background-image: none;
     }
     .hobbies > .item > * {
         background: transparent;
     }
-    .english:hover .english > p {
-        background: var(--light);
-        padding: 3px;
-        border-radius: 5px;
-    }
-    .english:hover {background-image: url('./img/eng.jpg');background-repeat: no-repeat;background-size: cover;}
+    .english:hover {background-image: url('./img/english.jpg');background-repeat: no-repeat;background-size: cover;}
     .chess:hover {background-image: url('./img/chess.jpg');background-repeat: no-repeat;background-size: cover;}
-    .speedcubing:hover {background-image: url('./img/3x3cubes.jpg');background-repeat: no-repeat;background-size: cover;}
+    .speedcubing:hover {background-image: url('./img/speedcubing.jpg');background-repeat: no-repeat;background-size: cover;}
     .baseball:hover {background-image: url('./img/baseball.jfif');background-repeat: no-repeat;background-size: cover;}
     .gym:hover {background-image: url('./img/gym.jpg');background-repeat: no-repeat;background-size: cover;}
 }
