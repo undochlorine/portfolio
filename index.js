@@ -1,3 +1,8 @@
+const colors = {
+	gray: getComputedStyle(document.documentElement)
+		.getPropertyValue('--gray')
+}
+	
 var allLinks = document.querySelectorAll('a');
 allLinks.forEach(l => l.target = '_blank');
 
@@ -19,6 +24,11 @@ document.querySelector('.face').onclick = () => {
 }
 
 const hobbiesList = ['english', 'chess', 'gym', 'baseball', 'speedcubing'];
+hobbiesList.forEach(h => {
+	document.querySelector(`.${h}`).style.backgroundRepeat = 'no-repeat'
+	document.querySelector(`.${h}`).style.backgroundSize = 'cover'
+	document.querySelector(`.${h}`).style.borderRadius = '5px'
+})
 // if (window.innerWidth >= 1025) {
 // 	hobbiesList.forEach(h => {
 // 		document.querySelector(`.hobbies > .${h}`).onmouseover = () => {alert(0)
@@ -38,7 +48,7 @@ hobbiesList.forEach(el => {
 		document.querySelectorAll(`.${el}`).forEach((e, index) => e.onmouseover = () => {
 			document.querySelectorAll(`.${el} > p`)[index].style.padding = '3px';
 			document.querySelectorAll(`.${el} > p`)[index].style.borderRadius = '5px';
-			document.querySelectorAll(`.${el} > p`)[index].style.background = '#ccddd3';
+			document.querySelectorAll(`.${el} > p`)[index].style.background = colors.gray;
 			document.querySelectorAll(`.${el}`)[index].style.border = 'none';
 		})
 		document.querySelectorAll(`.${el}`).forEach((e, index) => e.onmouseout = () => {
