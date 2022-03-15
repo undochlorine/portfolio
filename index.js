@@ -1,7 +1,33 @@
-const colors = {
-	gray: getComputedStyle(document.documentElement)
-		.getPropertyValue('--gray')
+let colors = {
+	i: 0,
+	bodyBackground: [
+		"#234479", "#c5bbb1"
+	],
+	itemBackground: [
+		"#99a6b2", "#afc1d5"
+	],
+	white: [
+		"#fff", "#fff"
+	],
+	selected: [
+		"#efdcce", "#ccddd3"
+	],
+	stroke: [
+		"#ff9a4d", "red"
+	],
+};
+function applyColors(data=colors) {
+	let colors = Object.keys(data);
+	//remove the i from the [colors]
+	colors.shift();
+	for (const color of colors) {
+		document.documentElement.style.setProperty(`--${color}`, data[color][data.i % 2])
+	}
+	data.i++;
+	return data;
 }
+//start painting the page
+colors = applyColors(colors);
 	
 var allLinks = document.querySelectorAll('a');
 allLinks.forEach(l => l.target = '_blank');
@@ -15,12 +41,7 @@ document.querySelector('.description').onclick = () => {
    });
 };
 document.querySelector('.face').onclick = () => {
-   let e = document.querySelector('.hobbies');
-   e.scrollIntoView({
-      behavior: "smooth",
-      block: "center",
-      inline: "nearest"
-   });
+	colors = applyColors(colors)
 }
 
 const hobbiesList = ['english', 'chess', 'gym', 'baseball', 'speedcubing'];
@@ -48,7 +69,8 @@ hobbiesList.forEach(el => {
 		document.querySelectorAll(`.${el}`).forEach((e, index) => e.onmouseover = () => {
 			document.querySelectorAll(`.${el} > p`)[index].style.padding = '3px';
 			document.querySelectorAll(`.${el} > p`)[index].style.borderRadius = '5px';
-			document.querySelectorAll(`.${el} > p`)[index].style.background = colors.gray;
+			document.querySelectorAll(`.${el} > p`)[index].style.background =
+				document.documentElement.style.getPropertyValue('--itemBackground');
 			document.querySelectorAll(`.${el}`)[index].style.border = 'none';
 		})
 		document.querySelectorAll(`.${el}`).forEach((e, index) => e.onmouseout = () => {
